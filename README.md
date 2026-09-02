@@ -1,6 +1,6 @@
 # Crystal Blocks
 
-Forge mod for Minecraft 1.20.1. Adds 7 decorative block families, 6 colors each, plus a glowing variant per family. First mod, built from scratch, no mechanics, no gimmicks, just blocks you can build with.
+Forge mod for Minecraft 1.20.1. Adds 7 decorative block families, 6 colors each, plus a glowing variant per family. My second mod, built from scratch, no mechanics, no gimmicks, just blocks you can build with.
 
 ## What's in it
 
