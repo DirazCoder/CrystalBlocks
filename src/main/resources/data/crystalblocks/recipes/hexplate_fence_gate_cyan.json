@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:hexplate_block_cyan"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:hexplate_fence_gate_cyan",
+    "count": 1
+  }
+}

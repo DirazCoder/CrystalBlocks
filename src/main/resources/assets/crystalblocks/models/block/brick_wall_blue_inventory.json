@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "crystalblocks:block/brick_block_blue"
+  }
+}

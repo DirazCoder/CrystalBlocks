@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:hexplate_block_orange"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:hexplate_stairs_orange",
+    "count": 4
+  }
+}

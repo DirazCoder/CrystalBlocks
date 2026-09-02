@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:marble_block_purple"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:marble_fence_gate_purple",
+    "count": 1
+  }
+}

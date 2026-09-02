@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:corroded_block_cyan"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:corroded_wall_cyan",
+    "count": 6
+  }
+}

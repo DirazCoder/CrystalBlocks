@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:speckle_block_glow"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:speckle_slab_glow",
+    "count": 6
+  }
+}

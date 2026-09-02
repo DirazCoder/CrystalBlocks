@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "crystalblocks:block/hexplate_block_blue"
+  }
+}

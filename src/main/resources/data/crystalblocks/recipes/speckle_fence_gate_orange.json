@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:speckle_block_orange"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:speckle_fence_gate_orange",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:corroded_block_blue"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:corroded_fence_gate_blue",
+    "count": 1
+  }
+}

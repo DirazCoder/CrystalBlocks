@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "crystalblocks:block/marble_block_cyan"
+  }
+}

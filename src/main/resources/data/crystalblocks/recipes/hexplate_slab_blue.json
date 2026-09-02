@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:hexplate_block_blue"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:hexplate_slab_blue",
+    "count": 6
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=true": {
+      "model": "crystalblocks:block/mossy_slab_green"
+    },
+    "type=bottom,waterlogged=false": {
+      "model": "crystalblocks:block/mossy_slab_green"
+    },
+    "type=top,waterlogged=true": {
+      "model": "crystalblocks:block/mossy_slab_green_top"
+    },
+    "type=top,waterlogged=false": {
+      "model": "crystalblocks:block/mossy_slab_green_top"
+    },
+    "type=double,waterlogged=true": {
+      "model": "crystalblocks:block/mossy_block_green"
+    },
+    "type=double,waterlogged=false": {
+      "model": "crystalblocks:block/mossy_block_green"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=true": {
+      "model": "crystalblocks:block/crystal_slab_glow"
+    },
+    "type=bottom,waterlogged=false": {
+      "model": "crystalblocks:block/crystal_slab_glow"
+    },
+    "type=top,waterlogged=true": {
+      "model": "crystalblocks:block/crystal_slab_glow_top"
+    },
+    "type=top,waterlogged=false": {
+      "model": "crystalblocks:block/crystal_slab_glow_top"
+    },
+    "type=double,waterlogged=true": {
+      "model": "crystalblocks:block/crystal_block_glow"
+    },
+    "type=double,waterlogged=false": {
+      "model": "crystalblocks:block/crystal_block_glow"
+    }
+  }
+}

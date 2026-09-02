@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=true": {
+      "model": "crystalblocks:block/corroded_slab_orange"
+    },
+    "type=bottom,waterlogged=false": {
+      "model": "crystalblocks:block/corroded_slab_orange"
+    },
+    "type=top,waterlogged=true": {
+      "model": "crystalblocks:block/corroded_slab_orange_top"
+    },
+    "type=top,waterlogged=false": {
+      "model": "crystalblocks:block/corroded_slab_orange_top"
+    },
+    "type=double,waterlogged=true": {
+      "model": "crystalblocks:block/corroded_block_orange"
+    },
+    "type=double,waterlogged=false": {
+      "model": "crystalblocks:block/corroded_block_orange"
+    }
+  }
+}

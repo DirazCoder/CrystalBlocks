@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:mossy_block_purple"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_slab_purple",
+    "count": 6
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:brick_block_glow"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:brick_stairs_glow",
+    "count": 4
+  }
+}

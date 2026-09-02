@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "crystalblocks:block/mossy_block_glow",
+    "top": "crystalblocks:block/mossy_block_glow",
+    "side": "crystalblocks:block/mossy_block_glow"
+  }
+}

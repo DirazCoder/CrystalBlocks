@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=true": {
+      "model": "crystalblocks:block/brick_slab_red"
+    },
+    "type=bottom,waterlogged=false": {
+      "model": "crystalblocks:block/brick_slab_red"
+    },
+    "type=top,waterlogged=true": {
+      "model": "crystalblocks:block/brick_slab_red_top"
+    },
+    "type=top,waterlogged=false": {
+      "model": "crystalblocks:block/brick_slab_red_top"
+    },
+    "type=double,waterlogged=true": {
+      "model": "crystalblocks:block/brick_block_red"
+    },
+    "type=double,waterlogged=false": {
+      "model": "crystalblocks:block/brick_block_red"
+    }
+  }
+}

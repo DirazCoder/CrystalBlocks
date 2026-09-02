@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SAS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "A": {
+      "item": "minecraft:cyan_dye"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:crystal_block_cyan",
+    "count": 8
+  }
+}

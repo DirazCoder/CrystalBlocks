@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:marble_block_cyan"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:marble_stairs_cyan",
+    "count": 4
+  }
+}

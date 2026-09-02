@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "crystalblocks:block/speckle_block_orange",
+    "top": "crystalblocks:block/speckle_block_orange",
+    "side": "crystalblocks:block/speckle_block_orange"
+  }
+}

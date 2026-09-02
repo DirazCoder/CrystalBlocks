@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "crystalblocks:block/hexplate_block_glow",
+    "top": "crystalblocks:block/hexplate_block_glow",
+    "side": "crystalblocks:block/hexplate_block_glow"
+  }
+}

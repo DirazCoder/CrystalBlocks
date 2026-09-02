@@ -1,0 +1,84 @@
+{
+  "variants": {
+    "facing=south,in_wall=true,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 0,
+      "uvlock": true
+    },
+    "facing=south,in_wall=true,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 0,
+      "uvlock": true
+    },
+    "facing=south,in_wall=false,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 0,
+      "uvlock": true
+    },
+    "facing=south,in_wall=false,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 0,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=false,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=false,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=true": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple_open",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=false": {
+      "model": "crystalblocks:block/hexplate_fence_gate_purple",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

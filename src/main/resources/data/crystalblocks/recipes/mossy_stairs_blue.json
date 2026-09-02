@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:mossy_block_blue"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_stairs_blue",
+    "count": 4
+  }
+}
