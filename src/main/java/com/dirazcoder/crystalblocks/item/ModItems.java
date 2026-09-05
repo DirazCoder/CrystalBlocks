@@ -1,100 +1,120 @@
 package com.dirazcoder.crystalblocks.item;
 
-import com.dirazcoder.crystalblocks.CrystalBlocksMod;
-import com.dirazcoder.crystalblocks.block.ModBlocks;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
-// gives every block from ModBlocks a BlockItem so it's actually obtainable
-// and shows up in creative, same family -> color -> block structure
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+
+import com.dirazcoder.crystalblocks.block.ModBlocks;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+// 1.7.10's GameRegistry.registerBlock already creates a plain ItemBlock for
+// every block we registered in ModBlocks, so there's no separate item
+// registration step like 1.20.1's DeferredRegister<Item> - this class is
+// really just the 273 crafting recipes. dye ingredients go through
+// ShapedOreRecipe + OreDictionary names ("dyeCyan" etc) instead of a raw
+// dye + metadata ItemStack, since that's the standard way to reference
+// dye colors without hardcoding metadata values that flip between item
+// forms across versions
 public class ModItems {
 
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, CrystalBlocksMod.MOD_ID);
-
-    public static final Map<String, Map<String, RegistryObject<Item>>> BLOCK_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Item>>> SLAB_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Item>>> STAIRS_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Item>>> FENCE_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Item>>> FENCE_GATE_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Item>>> WALL_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-
-    public static final Map<String, RegistryObject<Item>> GLOW_BLOCK_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, RegistryObject<Item>> GLOW_SLAB_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, RegistryObject<Item>> GLOW_STAIRS_ITEMS_BY_FAMILY = new LinkedHashMap<>();
-
+    // border material each family crafts from - same table the 1.20.1
+    // recipes used, except mossy (moss_block doesn't exist until 1.17,
+    // swapped for mossy_cobblestone) and corroded (iron_nugget doesn't
+    // exist until 1.11, swapped for redstone)
+    private static final Map<String, Item> FAMILY_INGREDIENTS = new HashMap<>();
     static {
-        for (String family : ModBlocks.FAMILIES) {
-            Map<String, RegistryObject<Item>> blockItems = new LinkedHashMap<>();
-            Map<String, RegistryObject<Item>> slabItems = new LinkedHashMap<>();
-            Map<String, RegistryObject<Item>> stairsItems = new LinkedHashMap<>();
-            Map<String, RegistryObject<Item>> fenceItems = new LinkedHashMap<>();
-            Map<String, RegistryObject<Item>> fenceGateItems = new LinkedHashMap<>();
-            Map<String, RegistryObject<Item>> wallItems = new LinkedHashMap<>();
-
-            ModBlocks.BLOCKS_BY_FAMILY.get(family).forEach((color, block) ->
-                    blockItems.put(color, ITEMS.register(
-                            family + "_block_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            ModBlocks.SLABS_BY_FAMILY.get(family).forEach((color, block) ->
-                    slabItems.put(color, ITEMS.register(
-                            family + "_slab_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            ModBlocks.STAIRS_BY_FAMILY.get(family).forEach((color, block) ->
-                    stairsItems.put(color, ITEMS.register(
-                            family + "_stairs_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            ModBlocks.FENCES_BY_FAMILY.get(family).forEach((color, block) ->
-                    fenceItems.put(color, ITEMS.register(
-                            family + "_fence_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            ModBlocks.FENCE_GATES_BY_FAMILY.get(family).forEach((color, block) ->
-                    fenceGateItems.put(color, ITEMS.register(
-                            family + "_fence_gate_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            ModBlocks.WALLS_BY_FAMILY.get(family).forEach((color, block) ->
-                    wallItems.put(color, ITEMS.register(
-                            family + "_wall_" + color,
-                            () -> new BlockItem(block.get(), new Item.Properties()))));
-
-            BLOCK_ITEMS_BY_FAMILY.put(family, blockItems);
-            SLAB_ITEMS_BY_FAMILY.put(family, slabItems);
-            STAIRS_ITEMS_BY_FAMILY.put(family, stairsItems);
-            FENCE_ITEMS_BY_FAMILY.put(family, fenceItems);
-            FENCE_GATE_ITEMS_BY_FAMILY.put(family, fenceGateItems);
-            WALL_ITEMS_BY_FAMILY.put(family, wallItems);
-
-            RegistryObject<Block> glowBlock = ModBlocks.GLOW_BLOCKS_BY_FAMILY.get(family);
-            GLOW_BLOCK_ITEMS_BY_FAMILY.put(family, ITEMS.register(
-                    family + "_block_glow",
-                    () -> new BlockItem(glowBlock.get(), new Item.Properties())));
-
-            RegistryObject<Block> glowSlab = ModBlocks.GLOW_SLABS_BY_FAMILY.get(family);
-            GLOW_SLAB_ITEMS_BY_FAMILY.put(family, ITEMS.register(
-                    family + "_slab_glow",
-                    () -> new BlockItem(glowSlab.get(), new Item.Properties())));
-
-            RegistryObject<Block> glowStairs = ModBlocks.GLOW_STAIRS_BY_FAMILY.get(family);
-            GLOW_STAIRS_ITEMS_BY_FAMILY.put(family, ITEMS.register(
-                    family + "_stairs_glow",
-                    () -> new BlockItem(glowStairs.get(), new Item.Properties())));
-        }
+        FAMILY_INGREDIENTS.put("crystal", Item.getItemFromBlock(Blocks.stone));
+        FAMILY_INGREDIENTS.put("speckle", Item.getItemFromBlock(Blocks.cobblestone));
+        FAMILY_INGREDIENTS.put("brick", Items.brick);
+        FAMILY_INGREDIENTS.put("corroded", Items.redstone);
+        FAMILY_INGREDIENTS.put("mossy", Item.getItemFromBlock(Blocks.mossy_cobblestone));
+        FAMILY_INGREDIENTS.put("marble", Item.getItemFromBlock(Blocks.quartz_block));
+        FAMILY_INGREDIENTS.put("hexplate", Items.iron_ingot);
     }
 
-    public static void register(IEventBus eventBus) {
-        ITEMS.register(eventBus);
+    private static final Map<String, String> COLOR_DYE_ORE_NAMES = new HashMap<>();
+    static {
+        COLOR_DYE_ORE_NAMES.put("cyan", "dyeCyan");
+        COLOR_DYE_ORE_NAMES.put("red", "dyeRed");
+        COLOR_DYE_ORE_NAMES.put("green", "dyeGreen");
+        COLOR_DYE_ORE_NAMES.put("purple", "dyePurple");
+        COLOR_DYE_ORE_NAMES.put("orange", "dyeOrange");
+        COLOR_DYE_ORE_NAMES.put("blue", "dyeBlue");
+    }
+
+    public static void registerItems() {
+        // nothing to do here - registerBlock in ModBlocks already gave
+        // every block its item form
+    }
+
+    public static void registerRecipes() {
+        for (String family : ModBlocks.FAMILIES) {
+            Item ingredient = FAMILY_INGREDIENTS.get(family);
+
+            for (String color : ModBlocks.COLORS) {
+                String dyeOreName = COLOR_DYE_ORE_NAMES.get(color);
+
+                Block block = ModBlocks.BLOCKS_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                        new ItemStack(block, 8),
+                        "III",
+                        "IDI",
+                        "III",
+                        'I',
+                        ingredient,
+                        'D',
+                        dyeOreName));
+
+                Block slab = ModBlocks.SLABS_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(slab, 6), "BBB", 'B', block));
+
+                Block stairs = ModBlocks.STAIRS_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(stairs, 4), "B  ", "BB ", "BBB", 'B', block));
+
+                Block fence = ModBlocks.FENCES_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(
+                    new ShapedOreRecipe(new ItemStack(fence, 3), "B#B", "B#B", 'B', block, '#', Items.stick));
+
+                Block fenceGate = ModBlocks.FENCE_GATES_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(
+                    new ShapedOreRecipe(new ItemStack(fenceGate, 1), "#B#", "#B#", 'B', block, '#', Items.stick));
+
+                Block wall = ModBlocks.WALLS_BY_FAMILY.get(family)
+                    .get(color);
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(wall, 6), "BBB", "BBB", 'B', block));
+            }
+
+            Block glowBlock = ModBlocks.GLOW_BLOCKS_BY_FAMILY.get(family);
+            GameRegistry.addRecipe(
+                new ShapedOreRecipe(
+                    new ItemStack(glowBlock, 8),
+                    "III",
+                    "IGI",
+                    "III",
+                    'I',
+                    ingredient,
+                    'G',
+                    Items.glowstone_dust));
+
+            Block glowSlab = ModBlocks.GLOW_SLABS_BY_FAMILY.get(family);
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(glowSlab, 6), "BBB", 'B', glowBlock));
+
+            Block glowStairs = ModBlocks.GLOW_STAIRS_BY_FAMILY.get(family);
+            GameRegistry
+                .addRecipe(new ShapedOreRecipe(new ItemStack(glowStairs, 4), "B  ", "BB ", "BBB", 'B', glowBlock));
+        }
     }
 }

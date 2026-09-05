@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "crystalblocks:block/speckle_block_red",
-    "top": "crystalblocks:block/speckle_block_red",
-    "side": "crystalblocks:block/speckle_block_red"
-  }
-}

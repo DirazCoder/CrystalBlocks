@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_fence_gate",
-  "textures": {
-    "texture": "crystalblocks:block/mossy_block_purple"
-  }
-}

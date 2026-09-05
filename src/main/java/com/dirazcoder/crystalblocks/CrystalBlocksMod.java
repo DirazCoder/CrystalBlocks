@@ -1,27 +1,29 @@
 package com.dirazcoder.crystalblocks;
 
 import com.dirazcoder.crystalblocks.block.ModBlocks;
-import com.dirazcoder.crystalblocks.item.ModCreativeTab;
 import com.dirazcoder.crystalblocks.item.ModItems;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(CrystalBlocksMod.MOD_ID)
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
+// 1.7.10 has no event bus / deferred registry, registration is just static
+// calls off GameRegistry, done in preInit so blocks/items exist before
+// anything else (recipes, tabs) tries to reference them in init
+@Mod(modid = CrystalBlocksMod.MOD_ID, name = "CrystalBlocks", version = "1.0.0")
 public class CrystalBlocksMod {
 
     public static final String MOD_ID = "crystalblocks";
 
-    public CrystalBlocksMod() {
-        // yeah the .get() call throws a deprecation warning in some setups but
-        // it's not actually deprecated til forge 1.21.1, checked forge's own
-        // source to be sure. not swapping this for the "fixed" version since
-        // that needs a constructor param i haven't confirmed works on 47.4.23,
-        // not worth risking a real bug just to shut up a fake warning
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        ModBlocks.registerBlocks();
+        ModItems.registerItems();
+    }
 
-        ModBlocks.register(modEventBus);
-        ModItems.register(modEventBus);
-        ModCreativeTab.register(modEventBus);
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        ModItems.registerRecipes();
     }
 }

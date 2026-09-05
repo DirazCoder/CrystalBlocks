@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/fence_inventory",
-  "textures": {
-    "texture": "crystalblocks:block/mossy_block_green"
-  }
-}

@@ -1,44 +1,33 @@
 package com.dirazcoder.crystalblocks.item;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+
 import com.dirazcoder.crystalblocks.CrystalBlocksMod;
 import com.dirazcoder.crystalblocks.block.ModBlocks;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 // own creative tab so all the block families sit together instead of
-// getting scattered across vanilla's building blocks tab
-public class ModCreativeTab {
+// getting scattered across vanilla's building blocks tab. CreativeTabs'
+// abstract icon hook on this Forge build is getTabIconItem (returns
+// Item), not the older getIconItemStack - the compiler is the source
+// of truth here since obfuscated/Forge-patched signatures drift between
+// MCP mappings
+public class ModCreativeTab extends CreativeTabs {
 
-    public static final DeferredRegister<CreativeModeTab> TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CrystalBlocksMod.MOD_ID);
+    public static final ModCreativeTab CRYSTAL_TAB = new ModCreativeTab();
 
-    public static final RegistryObject<CreativeModeTab> CRYSTAL_TAB = TABS.register(
-            "crystal_blocks_tab",
-            () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.crystalblocks"))
-                    .icon(() -> new ItemStack(ModItems.BLOCK_ITEMS_BY_FAMILY.get("crystal").get("cyan").get()))
-                    .displayItems((parameters, output) -> {
-                        for (String family : ModBlocks.FAMILIES) {
-                            ModItems.BLOCK_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            ModItems.SLAB_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            ModItems.STAIRS_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            ModItems.FENCE_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            ModItems.FENCE_GATE_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            ModItems.WALL_ITEMS_BY_FAMILY.get(family).values().forEach(item -> output.accept(item.get()));
-                            output.accept(ModItems.GLOW_BLOCK_ITEMS_BY_FAMILY.get(family).get());
-                            output.accept(ModItems.GLOW_SLAB_ITEMS_BY_FAMILY.get(family).get());
-                            output.accept(ModItems.GLOW_STAIRS_ITEMS_BY_FAMILY.get(family).get());
-                        }
-                    })
-                    .build()
-    );
+    private ModCreativeTab() {
+        super(CrystalBlocksMod.MOD_ID);
+    }
 
-    public static void register(IEventBus eventBus) {
-        TABS.register(eventBus);
+    // safe to reach into ModBlocks here even though ModBlocks also
+    // references CRYSTAL_TAB - this only runs when the game actually
+    // renders the tab icon, well after registerBlocks() has populated
+    // BLOCKS_BY_FAMILY, not at class-init time
+    @Override
+    public Item getTabIconItem() {
+        return Item.getItemFromBlock(
+            ModBlocks.BLOCKS_BY_FAMILY.get("crystal")
+                .get("cyan"));
     }
 }

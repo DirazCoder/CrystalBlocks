@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "crystalblocks:block/hexplate_block_red",
-    "top": "crystalblocks:block/hexplate_block_red",
-    "side": "crystalblocks:block/hexplate_block_red"
-  }
-}

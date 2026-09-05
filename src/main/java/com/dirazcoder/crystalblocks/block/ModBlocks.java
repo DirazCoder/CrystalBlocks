@@ -1,190 +1,191 @@
 package com.dirazcoder.crystalblocks.block;
 
-import com.dirazcoder.crystalblocks.CrystalBlocksMod;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
-// registers every block family (crystal, speckle, brick, corroded, mossy,
-// marble, hexplate) across 6 colors - each gets a block, slab, stairs,
-// fence, fence gate, and wall, all same stone-tier properties, only
-// texture/color differ. glow variant per family gets its own block, slab,
-// and stairs too, just no fence/gate/wall - didn't seem worth it for a
-// light source nobody's building a full fence line out of
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
+import com.dirazcoder.crystalblocks.item.ModCreativeTab;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+// 1.7.10 has no DeferredRegister, so this builds blocks directly and
+// hands them to GameRegistry, in a preInit call instead of a static
+// block. same family -> color -> block shape as the 1.20.1 version, just
+// built on 1.7.10's block classes. slabs need a single AND a double
+// instance here (BlockSlab doesn't merge two halves into a full block on
+// its own like 1.20.1's SlabBlock does - see SlabCrystalBlocks). Block
+// (Material) and BlockStairs(Block, int) are both protected, so plain
+// blocks/stairs go through CrystalBlock/CrystalBlockStairs instead of
+// calling those constructors directly. BlockFenceGate and BlockWall
+// both hardcode their getIcon(int, int) to vanilla textures (oak
+// planks / cobblestone) regardless of constructor args or
+// setBlockTextureName - confirmed from decompiled source - so
+// CrystalBlockFenceGate/CrystalBlockWall override getIcon directly.
+// BlockFence is different: it actually implements registerBlockIcons
+// for real, so CrystalBlockFence only needed to override that
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, CrystalBlocksMod.MOD_ID);
+    public static final List<String> FAMILIES = Arrays
+        .asList("crystal", "speckle", "brick", "corroded", "mossy", "marble", "hexplate");
 
-    // add a family name here to extend the set, everything else loops off this
-    public static final List<String> FAMILIES = List.of(
-            "crystal", "speckle", "brick", "corroded", "mossy", "marble", "hexplate"
-    );
+    public static final List<String> COLORS = Arrays.asList("cyan", "red", "green", "purple", "orange", "blue");
 
-    private static final Map<String, MapColor> VARIANTS = new LinkedHashMap<>();
-    static {
-        VARIANTS.put("cyan", MapColor.COLOR_CYAN);
-        VARIANTS.put("red", MapColor.COLOR_RED);
-        VARIANTS.put("green", MapColor.COLOR_GREEN);
-        VARIANTS.put("purple", MapColor.COLOR_PURPLE);
-        VARIANTS.put("orange", MapColor.COLOR_ORANGE);
-        VARIANTS.put("blue", MapColor.COLOR_BLUE);
-    }
+    public static final Map<String, Map<String, Block>> BLOCKS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> SLABS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> DOUBLE_SLABS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> STAIRS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> FENCES_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> FENCE_GATES_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Map<String, Block>> WALLS_BY_FAMILY = new LinkedHashMap<>();
 
-    // family -> color -> registered block, e.g. BLOCKS_BY_FAMILY.get("brick").get("red")
-    public static final Map<String, Map<String, RegistryObject<Block>>> BLOCKS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Block>>> SLABS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Block>>> STAIRS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Block>>> FENCES_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Block>>> FENCE_GATES_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, Map<String, RegistryObject<Block>>> WALLS_BY_FAMILY = new LinkedHashMap<>();
+    // one glowing block per family, full light level, block/slab/stairs
+    // only - no fence/gate/wall, same call as the 1.20.1 version (nobody's
+    // building a glowing fence line)
+    public static final Map<String, Block> GLOW_BLOCKS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Block> GLOW_SLABS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Block> GLOW_DOUBLE_SLABS_BY_FAMILY = new LinkedHashMap<>();
+    public static final Map<String, Block> GLOW_STAIRS_BY_FAMILY = new LinkedHashMap<>();
 
-    // one glowing block per family, full light level, crafted with glowstone
-    // dust instead of dye. family -> registered block. now also has a slab
-    // and stairs form - kept the light level at 15 on both halves instead of
-    // trying to dim it for a half-block, not worth the complexity
-    public static final Map<String, RegistryObject<Block>> GLOW_BLOCKS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, RegistryObject<Block>> GLOW_SLABS_BY_FAMILY = new LinkedHashMap<>();
-    public static final Map<String, RegistryObject<Block>> GLOW_STAIRS_BY_FAMILY = new LinkedHashMap<>();
-
-    static {
+    public static void registerBlocks() {
         for (String family : FAMILIES) {
-            Map<String, RegistryObject<Block>> blocks = new LinkedHashMap<>();
-            Map<String, RegistryObject<Block>> slabs = new LinkedHashMap<>();
-            Map<String, RegistryObject<Block>> stairs = new LinkedHashMap<>();
-            Map<String, RegistryObject<Block>> fences = new LinkedHashMap<>();
-            Map<String, RegistryObject<Block>> fenceGates = new LinkedHashMap<>();
-            Map<String, RegistryObject<Block>> walls = new LinkedHashMap<>();
+            Map<String, Block> blocks = new LinkedHashMap<>();
+            Map<String, Block> slabs = new LinkedHashMap<>();
+            Map<String, Block> doubleSlabs = new LinkedHashMap<>();
+            Map<String, Block> stairs = new LinkedHashMap<>();
+            Map<String, Block> fences = new LinkedHashMap<>();
+            Map<String, Block> fenceGates = new LinkedHashMap<>();
+            Map<String, Block> walls = new LinkedHashMap<>();
 
-            for (Map.Entry<String, MapColor> entry : VARIANTS.entrySet()) {
-                String color = entry.getKey();
-                MapColor mapColor = entry.getValue();
-
-                RegistryObject<Block> block = registerBlock(
-                        family + "_block_" + color,
-                        () -> new Block(BlockBehaviour.Properties.of()
-                                .mapColor(mapColor)
-                                .strength(2.0f, 6.0f)
-                                .requiresCorrectToolForDrops())
-                );
+            for (String color : COLORS) {
+                String blockName = family + "_block_" + color;
+                Block block = new CrystalBlock(Material.rock).setHardness(2.0f)
+                    .setResistance(6.0f)
+                    .setStepSound(Block.soundTypeStone)
+                    .setBlockName(blockName)
+                    .setBlockTextureName("crystalblocks:" + blockName)
+                    .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(block, blockName);
                 blocks.put(color, block);
 
-                // apparently SlabBlock doesn't even waterlog on its own, very
-                // stupid, but fixed up in WaterloggedSlabBlock, dont worry
-                RegistryObject<Block> slab = registerBlock(
-                        family + "_slab_" + color,
-                        () -> new WaterloggedSlabBlock(BlockBehaviour.Properties.of()
-                                .mapColor(mapColor)
-                                .strength(2.0f, 6.0f)
-                                .requiresCorrectToolForDrops())
-                );
+                String slabName = family + "_slab_" + color;
+                SlabCrystalBlocks slab = new SlabCrystalBlocks(false, blockName);
+                slab.setHardness(2.0f);
+                slab.setResistance(6.0f);
+                slab.setStepSound(Block.soundTypeStone);
+                slab.setBlockName(slabName);
+                slab.setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(slab, slabName);
                 slabs.put(color, slab);
 
-                RegistryObject<Block> stair = registerBlock(
-                        family + "_stairs_" + color,
-                        () -> new StairBlock(
-                                () -> block.get().defaultBlockState(),
-                                BlockBehaviour.Properties.of()
-                                        .mapColor(mapColor)
-                                        .strength(2.0f, 6.0f)
-                                        .requiresCorrectToolForDrops())
-                );
+                // double slab has no item form - it's never craftable or
+                // holdable directly, only produced by stacking two singles,
+                // same as vanilla stone/wood double slabs
+                String doubleSlabName = family + "_double_slab_" + color;
+                SlabCrystalBlocks doubleSlab = new SlabCrystalBlocks(true, blockName);
+                doubleSlab.setHardness(2.0f);
+                doubleSlab.setResistance(6.0f);
+                doubleSlab.setStepSound(Block.soundTypeStone);
+                doubleSlab.setBlockName(doubleSlabName);
+                GameRegistry.registerBlock(doubleSlab, doubleSlabName);
+                doubleSlabs.put(color, doubleSlab);
+                slab.setDoubleSlabBlock(doubleSlab);
+                doubleSlab.setSingleSlabBlock(slab);
+
+                String stairsName = family + "_stairs_" + color;
+                Block stair = new CrystalBlockStairs(block, 0).setHardness(2.0f)
+                    .setResistance(6.0f)
+                    .setStepSound(Block.soundTypeStone)
+                    .setBlockName(stairsName)
+                    .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(stair, stairsName);
                 stairs.put(color, stair);
 
-                // FenceBlock/WallBlock/FenceGateBlock already waterlog
-                // themselves (unlike SlabBlock above), so no wrapper class
-                // needed here, just register them straight
-                RegistryObject<Block> fence = registerBlock(
-                        family + "_fence_" + color,
-                        () -> new FenceBlock(BlockBehaviour.Properties.of()
-                                .mapColor(mapColor)
-                                .strength(2.0f, 6.0f)
-                                .requiresCorrectToolForDrops())
-                );
+                String fenceName = family + "_fence_" + color;
+                Block fence = new CrystalBlockFence(blockName, Material.rock).setHardness(2.0f)
+                    .setResistance(6.0f)
+                    .setStepSound(Block.soundTypeStone)
+                    .setBlockName(fenceName)
+                    .setBlockTextureName("crystalblocks:" + blockName)
+                    .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(fence, fenceName);
                 fences.put(color, fence);
 
-                RegistryObject<Block> fenceGate = registerBlock(
-                        family + "_fence_gate_" + color,
-                        () -> new FenceGateBlock(BlockBehaviour.Properties.of()
-                                .mapColor(mapColor)
-                                .strength(2.0f, 6.0f)
-                                .requiresCorrectToolForDrops(),
-                                WoodType.OAK)
-                );
+                String fenceGateName = family + "_fence_gate_" + color;
+                Block fenceGate = new CrystalBlockFenceGate(blockName).setHardness(2.0f)
+                    .setResistance(6.0f)
+                    .setStepSound(Block.soundTypeStone)
+                    .setBlockName(fenceGateName)
+                    .setBlockTextureName("crystalblocks:" + blockName)
+                    .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(fenceGate, fenceGateName);
                 fenceGates.put(color, fenceGate);
 
-                RegistryObject<Block> wall = registerBlock(
-                        family + "_wall_" + color,
-                        () -> new WallBlock(BlockBehaviour.Properties.of()
-                                .mapColor(mapColor)
-                                .strength(2.0f, 6.0f)
-                                .requiresCorrectToolForDrops())
-                );
+                String wallName = family + "_wall_" + color;
+                Block wall = new CrystalBlockWall(block, blockName).setHardness(2.0f)
+                    .setResistance(6.0f)
+                    .setStepSound(Block.soundTypeStone)
+                    .setBlockName(wallName)
+                    .setBlockTextureName("crystalblocks:" + blockName)
+                    .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+                GameRegistry.registerBlock(wall, wallName);
                 walls.put(color, wall);
             }
 
             BLOCKS_BY_FAMILY.put(family, blocks);
             SLABS_BY_FAMILY.put(family, slabs);
+            DOUBLE_SLABS_BY_FAMILY.put(family, doubleSlabs);
             STAIRS_BY_FAMILY.put(family, stairs);
             FENCES_BY_FAMILY.put(family, fences);
             FENCE_GATES_BY_FAMILY.put(family, fenceGates);
             WALLS_BY_FAMILY.put(family, walls);
 
-            RegistryObject<Block> glow = registerBlock(
-                    family + "_block_glow",
-                    // this glows the block, 15 is max light level in MC
-                    () -> new Block(BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.COLOR_YELLOW)
-                            .strength(2.0f, 6.0f)
-                            .lightLevel(state -> 15)
-                            .requiresCorrectToolForDrops())
-            );
-            GLOW_BLOCKS_BY_FAMILY.put(family, glow);
+            String glowBlockName = family + "_block_glow";
+            Block glowBlock = new CrystalBlock(Material.rock).setHardness(2.0f)
+                .setResistance(6.0f)
+                .setStepSound(Block.soundTypeStone)
+                .setLightLevel(1.0f)
+                .setBlockName(glowBlockName)
+                .setBlockTextureName("crystalblocks:" + glowBlockName)
+                .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+            GameRegistry.registerBlock(glowBlock, glowBlockName);
+            GLOW_BLOCKS_BY_FAMILY.put(family, glowBlock);
 
-            RegistryObject<Block> glowSlab = registerBlock(
-                    family + "_slab_glow",
-                    () -> new WaterloggedSlabBlock(BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.COLOR_YELLOW)
-                            .strength(2.0f, 6.0f)
-                            .lightLevel(state -> 15)
-                            .requiresCorrectToolForDrops())
-            );
+            String glowSlabName = family + "_slab_glow";
+            SlabCrystalBlocks glowSlab = new SlabCrystalBlocks(false, glowBlockName);
+            glowSlab.setHardness(2.0f);
+            glowSlab.setResistance(6.0f);
+            glowSlab.setStepSound(Block.soundTypeStone);
+            glowSlab.setLightLevel(1.0f);
+            glowSlab.setBlockName(glowSlabName);
+            glowSlab.setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+            GameRegistry.registerBlock(glowSlab, glowSlabName);
             GLOW_SLABS_BY_FAMILY.put(family, glowSlab);
 
-            RegistryObject<Block> glowStair = registerBlock(
-                    family + "_stairs_glow",
-                    () -> new StairBlock(
-                            () -> glow.get().defaultBlockState(),
-                            BlockBehaviour.Properties.of()
-                                    .mapColor(MapColor.COLOR_YELLOW)
-                                    .strength(2.0f, 6.0f)
-                                    .lightLevel(state -> 15)
-                                    .requiresCorrectToolForDrops())
-            );
+            String glowDoubleSlabName = family + "_double_slab_glow";
+            SlabCrystalBlocks glowDoubleSlab = new SlabCrystalBlocks(true, glowBlockName);
+            glowDoubleSlab.setHardness(2.0f);
+            glowDoubleSlab.setResistance(6.0f);
+            glowDoubleSlab.setStepSound(Block.soundTypeStone);
+            glowDoubleSlab.setLightLevel(1.0f);
+            glowDoubleSlab.setBlockName(glowDoubleSlabName);
+            GameRegistry.registerBlock(glowDoubleSlab, glowDoubleSlabName);
+            GLOW_DOUBLE_SLABS_BY_FAMILY.put(family, glowDoubleSlab);
+            glowSlab.setDoubleSlabBlock(glowDoubleSlab);
+            glowDoubleSlab.setSingleSlabBlock(glowSlab);
+
+            String glowStairsName = family + "_stairs_glow";
+            Block glowStair = new CrystalBlockStairs(glowBlock, 0).setHardness(2.0f)
+                .setResistance(6.0f)
+                .setStepSound(Block.soundTypeStone)
+                .setLightLevel(1.0f)
+                .setBlockName(glowStairsName)
+                .setCreativeTab(ModCreativeTab.CRYSTAL_TAB);
+            GameRegistry.registerBlock(glowStair, glowStairsName);
             GLOW_STAIRS_BY_FAMILY.put(family, glowStair);
         }
-    }
-
-    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {
-        return BLOCKS.register(name, block);
-    }
-
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
     }
 }

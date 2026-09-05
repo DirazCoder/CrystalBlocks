@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "crystalblocks:block/mossy_block_glow",
-    "top": "crystalblocks:block/mossy_block_glow",
-    "side": "crystalblocks:block/mossy_block_glow"
-  }
-}

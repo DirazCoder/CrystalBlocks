@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "crystalblocks:block/mossy_block_blue"
-  }
-}

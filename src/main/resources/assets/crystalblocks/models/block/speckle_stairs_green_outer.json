@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "crystalblocks:block/speckle_block_green",
-    "top": "crystalblocks:block/speckle_block_green",
-    "side": "crystalblocks:block/speckle_block_green"
-  }
-}

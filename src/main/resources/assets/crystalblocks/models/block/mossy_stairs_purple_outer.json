@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "crystalblocks:block/mossy_block_purple",
-    "top": "crystalblocks:block/mossy_block_purple",
-    "side": "crystalblocks:block/mossy_block_purple"
-  }
-}

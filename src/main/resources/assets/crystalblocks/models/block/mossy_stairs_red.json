@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "crystalblocks:block/mossy_block_red",
-    "top": "crystalblocks:block/mossy_block_red",
-    "side": "crystalblocks:block/mossy_block_red"
-  }
-}
