@@ -68,6 +68,17 @@ public class SlabCrystalBlocks extends BlockSlab {
         return isDouble ? 2 : 1;
     }
 
+    // vanilla's BlockSlab.getItem() (used by pick-block / middle-click) only
+    // special-cases Blocks.double_stone_slab and Blocks.double_wooden_slab -
+    // anything else falls through to Item.getItemFromBlock(Blocks.stone_slab).
+    // that's the middle-click-gives-stone-slab bug: our double variant isn't
+    // either of those, so it hits the fallback. overriding here routes it
+    // through our own singleSlabBlock instead.
+    @Override
+    public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(isDouble ? singleSlabBlock : this);
+    }
+
     // stacking two single slabs on top of each other swaps them for the
     // double variant, same as vanilla stone/wood slabs. isDouble here is
     // our own field mirroring the constructor arg - BlockSlab doesn't
