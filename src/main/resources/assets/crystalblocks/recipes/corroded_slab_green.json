@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:corroded_block_green",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:corroded_slab_green",
+    "count": 6,
+    "data": 0
+  }
+}

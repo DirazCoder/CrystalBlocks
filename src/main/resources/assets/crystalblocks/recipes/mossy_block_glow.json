@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "IGI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:mossy_cobblestone",
+      "data": 0
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_block_glow",
+    "count": 8,
+    "data": 0
+  }
+}

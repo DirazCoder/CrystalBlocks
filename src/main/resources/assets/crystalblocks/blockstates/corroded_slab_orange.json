@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "crystalblocks:corroded_slab_orange"
+    },
+    "half=top": {
+      "model": "crystalblocks:corroded_slab_orange_top"
+    }
+  }
+}

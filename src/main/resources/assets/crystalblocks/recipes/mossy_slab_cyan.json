@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:mossy_block_cyan",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_slab_cyan",
+    "count": 6,
+    "data": 0
+  }
+}

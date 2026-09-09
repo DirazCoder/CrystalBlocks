@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:crystal_block_blue",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:crystal_stairs_blue",
+    "count": 4,
+    "data": 0
+  }
+}

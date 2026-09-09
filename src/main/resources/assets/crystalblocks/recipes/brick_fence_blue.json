@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B#B",
+    "B#B"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:brick_block_blue",
+      "data": 0
+    },
+    "#": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:brick_fence_blue",
+    "count": 3,
+    "data": 0
+  }
+}

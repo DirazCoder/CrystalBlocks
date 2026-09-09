@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:brick_block_cyan",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:brick_stairs_cyan",
+    "count": 4,
+    "data": 0
+  }
+}

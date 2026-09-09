@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:brick_block_green",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:brick_slab_green",
+    "count": 6,
+    "data": 0
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_side",
+  "textures": {
+    "wall": "crystalblocks:block/marble_block_red"
+  }
+}

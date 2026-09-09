@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "crystalblocks:block/marble_block_cyan"
+  }
+}

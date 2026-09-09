@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_post",
+  "textures": {
+    "wall": "crystalblocks:block/brick_block_red"
+  }
+}

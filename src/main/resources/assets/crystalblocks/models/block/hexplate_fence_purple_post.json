@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "crystalblocks:block/hexplate_block_purple"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:speckle_block_green",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:speckle_wall_green",
+    "count": 6,
+    "data": 0
+  }
+}

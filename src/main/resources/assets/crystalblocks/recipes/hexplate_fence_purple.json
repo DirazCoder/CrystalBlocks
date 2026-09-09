@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B#B",
+    "B#B"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:hexplate_block_purple",
+      "data": 0
+    },
+    "#": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:hexplate_fence_purple",
+    "count": 3,
+    "data": 0
+  }
+}

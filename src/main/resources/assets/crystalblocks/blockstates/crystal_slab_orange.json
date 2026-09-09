@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "crystalblocks:crystal_slab_orange"
+    },
+    "half=top": {
+      "model": "crystalblocks:crystal_slab_orange_top"
+    }
+  }
+}

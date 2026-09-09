@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_gate_closed",
+  "textures": {
+    "texture": "crystalblocks:block/marble_block_red"
+  }
+}

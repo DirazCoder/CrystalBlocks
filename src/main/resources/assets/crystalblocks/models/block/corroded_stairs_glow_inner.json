@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "crystalblocks:block/corroded_block_glow",
+    "top": "crystalblocks:block/corroded_block_glow",
+    "side": "crystalblocks:block/corroded_block_glow"
+  }
+}

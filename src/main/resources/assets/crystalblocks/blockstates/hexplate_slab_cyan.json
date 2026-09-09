@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "crystalblocks:hexplate_slab_cyan"
+    },
+    "half=top": {
+      "model": "crystalblocks:hexplate_slab_cyan_top"
+    }
+  }
+}

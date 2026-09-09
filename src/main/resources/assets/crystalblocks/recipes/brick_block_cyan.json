@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "IDI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:brick",
+      "data": 0
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "dyeCyan"
+    }
+  },
+  "result": {
+    "item": "crystalblocks:brick_block_cyan",
+    "count": 8,
+    "data": 0
+  }
+}

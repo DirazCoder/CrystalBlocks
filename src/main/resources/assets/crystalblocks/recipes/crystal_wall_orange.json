@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:crystal_block_orange",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:crystal_wall_orange",
+    "count": 6,
+    "data": 0
+  }
+}

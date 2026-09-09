@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:marble_block_orange",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:marble_slab_orange",
+    "count": 6,
+    "data": 0
+  }
+}

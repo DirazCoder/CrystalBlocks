@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:speckle_block_purple",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:speckle_slab_purple",
+    "count": 6,
+    "data": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:corroded_block_purple",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:corroded_stairs_purple",
+    "count": 4,
+    "data": 0
+  }
+}

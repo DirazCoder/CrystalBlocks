@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "crystalblocks:mossy_slab_red"
+    },
+    "half=top": {
+      "model": "crystalblocks:mossy_slab_red_top"
+    }
+  }
+}

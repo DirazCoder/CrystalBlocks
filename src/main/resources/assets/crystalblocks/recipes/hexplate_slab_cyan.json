@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:hexplate_block_cyan",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:hexplate_slab_cyan",
+    "count": 6,
+    "data": 0
+  }
+}

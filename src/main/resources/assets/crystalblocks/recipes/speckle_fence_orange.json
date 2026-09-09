@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B#B",
+    "B#B"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:speckle_block_orange",
+      "data": 0
+    },
+    "#": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:speckle_fence_orange",
+    "count": 3,
+    "data": 0
+  }
+}

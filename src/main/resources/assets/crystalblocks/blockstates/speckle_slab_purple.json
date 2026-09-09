@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "crystalblocks:speckle_slab_purple"
+    },
+    "half=top": {
+      "model": "crystalblocks:speckle_slab_purple_top"
+    }
+  }
+}

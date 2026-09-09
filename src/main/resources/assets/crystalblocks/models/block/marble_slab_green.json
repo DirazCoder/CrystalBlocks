@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/half_slab",
+  "textures": {
+    "bottom": "crystalblocks:block/marble_block_green",
+    "top": "crystalblocks:block/marble_block_green",
+    "side": "crystalblocks:block/marble_block_green"
+  }
+}

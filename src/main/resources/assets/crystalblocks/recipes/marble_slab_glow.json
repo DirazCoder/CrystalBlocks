@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:marble_block_glow",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:marble_slab_glow",
+    "count": 6,
+    "data": 0
+  }
+}

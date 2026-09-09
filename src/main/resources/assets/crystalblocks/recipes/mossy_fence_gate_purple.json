@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "#B#",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:mossy_block_purple",
+      "data": 0
+    },
+    "#": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_fence_gate_purple",
+    "count": 1,
+    "data": 0
+  }
+}

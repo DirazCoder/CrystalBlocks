@@ -1,0 +1,148 @@
+{
+  "variants": {
+    "facing=south,in_wall=false,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue"
+    },
+    "facing=south,in_wall=false,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue"
+    },
+    "facing=south,in_wall=false,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open"
+    },
+    "facing=south,in_wall=false,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open"
+    },
+    "facing=south,in_wall=true,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall"
+    },
+    "facing=south,in_wall=true,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall"
+    },
+    "facing=south,in_wall=true,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open"
+    },
+    "facing=south,in_wall=true,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open"
+    },
+    "facing=west,in_wall=false,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=false,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=false,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=false,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=west,in_wall=true,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=false,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north,in_wall=true,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=false,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_open",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=false,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=false,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=true,powered=false": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,in_wall=true,open=true,powered=true": {
+      "model": "crystalblocks:corroded_fence_gate_blue_wall_open",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

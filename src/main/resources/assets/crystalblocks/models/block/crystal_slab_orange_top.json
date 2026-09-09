@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/upper_slab",
+  "textures": {
+    "bottom": "crystalblocks:block/crystal_block_orange",
+    "top": "crystalblocks:block/crystal_block_orange",
+    "side": "crystalblocks:block/crystal_block_orange"
+  }
+}

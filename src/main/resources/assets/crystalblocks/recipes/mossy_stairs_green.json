@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "crystalblocks:mossy_block_green",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "crystalblocks:mossy_stairs_green",
+    "count": 4,
+    "data": 0
+  }
+}
